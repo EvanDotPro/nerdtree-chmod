@@ -1,0 +1,9 @@
+This is a plugin for NERDTree to allow for chmod'ing files in Vim.
+
+When opening the default file menu in NERDTree using <m>, you can hit <x> which
+will allow you to chmod the file. Because I primarily use this to toggle whether
+a file is executable or not, it will default to either +x or -x as the
+parameters to pass to `chmod` based on whether the file is currently executable
+or not. You can remove the +x/-x and change the parameter to anything you'd
+like, such as 777, 2775, -wx, etc... The value given is simply given to the
+system's chmod command.
