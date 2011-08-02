@@ -9,7 +9,12 @@ call NERDTreeAddMenuItem({
             \ 'text': '(x)chmod -x',
             \ 'shortcut': 'x',
             \ 'callback': 'NERDTreeExecFileOff',
-            \ 'isActiveCallback': 'NERDTreeExecFileActive' })
+            \ 'isActiveCallback': 'NERDTreeExecFileActiveIncDir' })
+
+function! NERDTreeExecFileActiveIncDir()
+    let curNode = g:NERDTreeFileNode.GetSelected()
+    return curNode.path.isExecutable
+endfunction
 
 function! NERDTreeExecFileOff()
     let curNode = g:NERDTreeFileNode.GetSelected()
@@ -33,7 +38,7 @@ call NERDTreeAddMenuItem({
 
 function! NERDTreeExecFileNotActive()
     let curNode = g:NERDTreeFileNode.GetSelected()
-    return !curNode.path.isDirectory && !curNode.path.isExecutable
+    return !curNode.path.isExecutable
 endfunction
 
 function! NERDTreeExecFileOn()
